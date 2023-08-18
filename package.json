@@ -1,0 +1,24 @@
+{
+   "name": "packages-devlrserver",
+   "version": "0.0.1",
+   "description": "Simple livereload server for development",
+   "main": "index.js",
+   "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1"
+   },
+   "repository": {
+      "type": "git",
+      "url": "git+https://github.com/ulmzr/devlrserver.git"
+   },
+   "keywords": [],
+   "author": "Yulmizar",
+   "license": "ISC",
+   "bugs": {
+      "url": "https://github.com/ulmzr/devlrserver/issues"
+   },
+   "homepage": "https://github.com/ulmzr/devlrserver#readme",
+   "dependencies": {
+      "chokidar": "^3.5.3",
+      "ws": "^8.13.0"
+   }
+}
