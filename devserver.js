@@ -6,11 +6,13 @@ const { WebSocketServer } = require("ws");
 
 let cwd = process.cwd();
 let argv = process.argv;
-let port = argv.indexOf("-p", 0) > 0 ? argv[argv.indexOf("-p", 0) + 1] : 8080;
-let watch = argv.indexOf("-w", 0) > 0 ? argv[argv.indexOf("-w", 0) + 1] : "*.js";
-let outdir = argv.indexOf("-o", 0) > 0 ? argv[argv.indexOf("-o", 0) + 1] : "public";
+let port = argv.indexOf("--port", 0) > 0 ? argv[argv.indexOf("--port", 0) + 1] : 8080;
+let watch = argv.indexOf("--watch", 0) > 0 ? argv[argv.indexOf("--watch", 0) + 1] : "*.js";
+let outdir = argv.indexOf("--out", 0) > 0 ? argv[argv.indexOf("--outdir", 0) + 1] : "public";
 
 watch = watch.split("|");
+console.log(outdir);
+
 let index = indexHTML();
 
 const server = http.createServer((req, res) => {
@@ -28,7 +30,8 @@ const server = http.createServer((req, res) => {
       res.writeHead(code, { "Content-Type": "text/html" });
       content = index;
    }
-   console.log(code == "200" ? code : 400, url);
+   // console.log(code == "200" ? code : 400, url);
+   console.log(code == "200" ? "\x1b[32m✔\x1b[33m  " + code : "\x1b[31m✗  404", "\x1b[37m" + url, "\x1b[0m");
    res.end(content);
 });
 
@@ -43,7 +46,7 @@ wss.on("connection", function connection(ws) {
    const startTimer = () => {
       timer = setTimeout(() => {
          ws.send("reload");
-      }, 250);
+      }, 100);
    };
 
    const reload = () => {
