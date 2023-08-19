@@ -1,10 +1,13 @@
 const http = require("http");
+const ip = require("ip");
 const fs = require("fs");
 const path = require("path");
 const chokidar = require("chokidar");
 const { WebSocketServer } = require("ws");
 
 const cwd = process.cwd();
+const ipAddress = ip.address();
+console.log(ipAddress);
 
 module.exports = function (opts = {}) {
    let port = opts.port || 8080;
@@ -35,6 +38,7 @@ module.exports = function (opts = {}) {
 
    server.listen(port);
    console.log(`Listening on http://localhost${port === 80 ? `` : `:${port}`}`);
+   console.log(`Listening on http://${ipAddress}${port === 80 ? `` : `:${port}`}`);
 
    const wss = new WebSocketServer({ server });
 
@@ -91,7 +95,7 @@ module.exports = function (opts = {}) {
    }
 
    function reloadScript() {
-      return `let socketUrl="ws://localhost:${port}";
+      return `let socketUrl="ws://${ipAddress}:${port}";
 let wss=new WebSocket(socketUrl);
 let delay;
 wss.onclose = () => {
