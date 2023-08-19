@@ -7,20 +7,20 @@ For development only, do not use in production.
 npm i -D devlrserver
 ```
 ### Usage
-```bash
-node app.js [options]
-```
 ```js
 // app.js
-require('devlrserver');
+const serve = require('devlrserver');
+serve(options)
 ...
 ```
 
 ### Options
 
-```
---port [...]   = Default 8080.
---watch [...]  = Separate by comma. Default "*.js". 
---outdir [...] = Default "public".
+```js
+const options = {
+   port:[port] // Default:8080
+   watch:["*.js"] // Default "*.js". User comma to seperate file name.
+   outdir:[public_folder] // Default "public"
+}
 ```
 
