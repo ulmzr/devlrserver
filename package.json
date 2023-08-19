@@ -1,5 +1,5 @@
 {
-   "name": "devlrserver",
+   "name": "devlrserverr",
    "version": "0.0.2",
    "description": "Simple livereload server for development",
    "main": "index.js",
