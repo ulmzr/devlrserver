@@ -1,6 +1,6 @@
 {
    "name": "devlrserver",
-   "version": "0.0.5",
+   "version": "0.0.6",
    "description": "Simple livereload server for development",
    "main": "index.js",
    "repository": {
