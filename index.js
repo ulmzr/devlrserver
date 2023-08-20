@@ -7,7 +7,6 @@ const { WebSocketServer } = require("ws");
 
 const cwd = process.cwd();
 const ipAddress = ip.address();
-console.log(ipAddress);
 
 module.exports = function (opts = {}) {
    let port = opts.port || 8080;
